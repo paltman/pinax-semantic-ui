@@ -5,6 +5,10 @@ const gulp   = require('gulp');
 const less   = require('gulp-less');
 const prefix = require('gulp-autoprefixer');
 
+const LessPluginSemanticUI = require('less-plugin-semantic-ui');
+const SemanticUIPlugin = new LessPluginSemanticUI();
+
+
 /**
  * Module body
  */
@@ -14,6 +18,6 @@ module.exports = (entry, config) => {
   config.autoprefixer = config.autoprefixer || {};
 
   return gulp.src(entry)
-    .pipe(less(config.less))
+    .pipe(less(config.less, {plugins: [SemanticUIPlugin]}))
     .pipe(prefix(config.autoprefixer));
 };

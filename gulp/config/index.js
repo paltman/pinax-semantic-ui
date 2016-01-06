@@ -36,7 +36,7 @@ exports = module.exports = {
         source: staticSource + 'less/site.less',
         dist: staticBuild + 'css/',
         npmPaths: [
-            npmRoot + 'bootstrap/less',
+            npmRoot + 'semantic-ui-less',
             npmRoot + 'font-awesome/less',
             npmRoot
         ]
