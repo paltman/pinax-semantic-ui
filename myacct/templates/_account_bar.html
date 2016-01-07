@@ -2,24 +2,27 @@
 {% load account_tags %}
 
 
-<ul class="nav navbar-nav pull-right">
-    {% if request.user.is_authenticated %}
-        <p class="navbar-text">
-            <i class="fa fa-user"></i> {% user_display request.user %}
-        </p>
-        <li>
-            <a href="{% url 'account_settings' %}"><i class="fa fa-cog"></i> {% trans "Settings" %}</a>
-        </li>
-        <li>
-            <a id="account_logout" href="{% url 'account_logout' %}"><i class="fa fa-power-off"></i> {% trans "Log out" %}</a>
-        </li>
-    {% else %}
-        <li><a href="{% url 'account_login' %}">{% trans "Log in" %}</a></li>
-        {% if ACCOUNT_OPEN_SIGNUP %}
-            <li><a href="{% url 'account_signup' %}">{% trans "Sign up" %}</a></li>
-        {% endif %}
+{% if request.user.is_authenticated %}
+    <div class="item">
+        <i class="fa fa-user"></i> {% user_display request.user %}
+    </div>
+    <div class="item">
+        <a href="{% url 'account_settings' %}"><i class="fa fa-cog"></i> {% trans "Settings" %}</a>
+    </div>
+    <div class="item">
+        <a id="account_logout" href="{% url 'account_logout' %}"><i class="fa fa-power-off"></i> {% trans "Log out" %}</a>
+    </div>
+{% else %}
+    <div class="item">
+        <a href="{% url 'account_login' %}">{% trans "Log in" %}</a>
+    </div>
+    {% if ACCOUNT_OPEN_SIGNUP %}
+        <div class="item">
+            <a href="{% url 'account_signup' %}">{% trans "Sign up" %}</a>
+        </div>
     {% endif %}
-</ul>
+{% endif %}
+
 
 <form id="accountLogOutForm" style="display: none;" action="{% url 'account_logout' %}" method="POST">
     {% csrf_token %}
