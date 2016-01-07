@@ -4,6 +4,7 @@ const staticSource = staticRoot + 'src/';
 const staticBuild = staticRoot + '_build/';
 const staticDist = staticRoot + 'dist/';
 const npmRoot = 'node_modules/';
+const semanticUITheme = 'default';
 
 
 exports = module.exports = {
@@ -28,8 +29,10 @@ exports = module.exports = {
         stylesTemplate: staticSource + 'hbs/_styles.hbs',
     },
     fonts: {
-        fontAwesomeSource: npmRoot + 'font-awesome/fonts/**.*',
-        bootstrapSource: npmRoot + 'bootstrap/fonts/**.*',
+        sources: [
+            npmRoot + 'font-awesome/fonts/**.*',
+            staticSource + 'semantic/themes/' + semanticUITheme + '/assets/fonts/**.*',
+        ],
         dist: staticDist + 'fonts/'
     },
     styles: {
@@ -49,8 +52,9 @@ exports = module.exports = {
         dist: staticBuild + 'js/'
     },
     images: {
-        source: staticSource + 'images/**.*',
-        npm: [
+        sources: [
+            staticSource + 'images/**.*',
+            staticSource + 'semantic/themes/' + semanticUITheme + '/assets/images/**.*'
         ],
         dist: staticDist + 'images/'
     },

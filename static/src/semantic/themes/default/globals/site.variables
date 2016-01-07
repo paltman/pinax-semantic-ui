@@ -205,6 +205,9 @@
 @imagePath : '../../themes/default/assets/images';
 @fontPath  : '../../themes/default/assets/fonts';
 
+@imagePath : '../images';
+@fontPath  : '../fonts';
+
 /*-------------------
        Em Sizes
 --------------------*/
